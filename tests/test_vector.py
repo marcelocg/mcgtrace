@@ -43,8 +43,15 @@ class TestVector(object):
         v1 = Vector(2, 3, 1)
         v2 = Vector(3, 2, 1)
         vr = v1.add(v2)
-        # a point added to a vector results in a resulting vector (w=0)
+        # a vector added to a vector results in a resulting vector (w=0)
         assert vr.to_tuple() == (5, 5, 2, 0)
+
+    def test_addition_to_tuple_as_vector(self):
+        v1 = Vector(2, 3, 1)
+        v2 = (3, 2, 1, 0)
+        vr = v1.add(v2)
+        # a vector added to a vector results in a resulting vector (w=0)
+        assert vr == (5, 5, 2, 0)
 
     def test_vector_addition_results_in_new_vector_object(self):
         v1 = Vector(2, 3, 1)
