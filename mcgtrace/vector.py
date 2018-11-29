@@ -11,3 +11,6 @@ class Vector:
     @staticmethod
     def object_is_vector(p):
         return p.w == 0.0
+
+    def to_tuple(self):
+        return (self.x, self.y, self.z, self.w)

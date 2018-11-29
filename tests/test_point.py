@@ -14,6 +14,10 @@ class TestPoint(object):
         tup = (1, 1, 1, 2)
         assert not Point.tuple_is_point(tup)
 
+    def test_vector_tuple_is_not_a_point(self):
+        tup = (1, 1, 1, 0)
+        assert not Point.tuple_is_point(tup)
+
     def test_incomplete_tuple_is_not_a_point(self):
         tup = (1, 1, 1)
         assert not Point.tuple_is_point(tup)
@@ -21,3 +25,7 @@ class TestPoint(object):
     def test_cretes_a_point(self):
         point = Point(1, 1, 1)
         assert point.w == 1.0
+
+    def test_point_as_tuple(self):
+        point = Point(1, 1, 1)
+        assert point.to_tuple() == (1.0, 1.0, 1.0, 1.0)
