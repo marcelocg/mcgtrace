@@ -39,6 +39,9 @@ class TestPoint(object):
         point = Point(1, 1, 1)
         assert point.to_tuple() == (1.0, 1.0, 1.0, 1.0)
 
+    # ...............{ O P E R A T I O N S             }...............
+
+    # ...............{ Addition                        }...............
     def test_addition_to_vector_object(self):
         point = Point(3, -2, 5)
         vector = Vector(-2, 3, 1)
@@ -46,9 +49,6 @@ class TestPoint(object):
         # a point added to a vector results in a translated point (w=1)
         assert destination.to_tuple() == (1, 1, 6, 1)
 
-    # ...............{ O P E R A T I O N S             }...............
-
-    # ...............{ Addition                        }...............
     def test_vector_addition_results_in_new_point_object(self):
         starting_point = Point(3, -2, 5)
         vector = Vector(-2, 3, 1)
