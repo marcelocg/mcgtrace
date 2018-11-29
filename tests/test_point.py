@@ -4,17 +4,14 @@ from mcgtrace.vector import Vector
 
 
 class TestPoint(object):
-    def test_builds_a_point_from_a_tuple(self):
-        point = Point.from_tuple((1, 1, 1))
-        assert Point.object_is_point(point)
-        
-    def test_recognizes_a_point_in_a_tuple(self):
-        tup = (1.0, 1.0, 1.0, 1.0)
-        assert Point.tuple_is_point(tup)
-
+    # ...............{ Validation methods              }...............
     def test_recognizes_a_point_in_a_point_object(self):
         point = Point(1.0, 1.0, 1.0)
         assert Point.object_is_point(point)
+
+    def test_recognizes_a_point_in_a_tuple(self):
+        tup = (1.0, 1.0, 1.0, 1.0)
+        assert Point.tuple_is_point(tup)
 
     def test_malformed_tuple_is_not_a_point(self):
         tup = (1, 1, 1, 2)
@@ -28,10 +25,16 @@ class TestPoint(object):
         tup = (1, 1, 1)
         assert not Point.tuple_is_point(tup)
 
-    def test_cretes_a_point(self):
+    # ...............{ Creational meths & constructors }...............
+    def test_builds_a_point_from_a_tuple(self):
+        point = Point.from_tuple((1, 1, 1))
+        assert Point.object_is_point(point)
+        
+    def test_creates_a_point_from_coordinates(self):
         point = Point(1, 1, 1)
         assert point.w == 1.0
 
+    # ...............{ Conversion methods              }...............
     def test_point_as_tuple(self):
         point = Point(1, 1, 1)
         assert point.to_tuple() == (1.0, 1.0, 1.0, 1.0)
@@ -43,6 +46,9 @@ class TestPoint(object):
         # a point added to a vector results in a translated point (w=1)
         assert destination.to_tuple() == (1, 1, 6, 1)
 
+    # ...............{ O P E R A T I O N S             }...............
+
+    # ...............{ Addition                        }...............
     def test_vector_addition_results_in_new_point_object(self):
         starting_point = Point(3, -2, 5)
         vector = Vector(-2, 3, 1)
@@ -80,7 +86,7 @@ class TestPoint(object):
         with pytest.raises(ValueError):
             point.add((1, 2, 3, 4))  # tuple that is not a Point or a Vector
 
-    def test_invalid_type_argument_raises_type_error(self):
+    def test_addition_invalid_type_argument_raises_type_error(self):
         point = Point(-2, 3, 1)
         with pytest.raises(TypeError):
             point.add(7)  # one can not add a scalar to a point
