@@ -1,3 +1,5 @@
+from mcgtrace.point import Point
+
 class Vector:
 
     def __init__(self, *tup):
@@ -14,3 +16,24 @@ class Vector:
 
     def to_tuple(self):
         return (self.x, self.y, self.z, self.w)
+
+    def add(self, other):
+        if isinstance(other, Vector):
+            return Vector(self.x + other.x,
+                          self.y + other.y,
+                          self.z + other.z)
+        elif isinstance(other, Point):
+            return Point(self.x + other.x,
+                         self.y + other.y,
+                         self.z + other.z)
+        elif isinstance(other, tuple) and len(other) == 4:
+            if other[3] == 0 or other[3] == 1:
+                return (self.x + other[0],
+                        self.y + other[1],
+                        self.z + other[2],
+                        self.w + other[3])
+            else:
+                raise ValueError("Tuple passed as argument does not represent a Point or a Vector")
+        else:
+            raise TypeError(
+                "Value is not a Vector, a Point or a 4-dimensional tuple")
