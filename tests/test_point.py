@@ -90,3 +90,16 @@ class TestPoint(object):
         point = Point(-2, 3, 1)
         with pytest.raises(TypeError):
             point.add(7)  # one can not add a scalar to a point
+
+    # ...............{ Subtraction                     }...............
+    def test_subtraction_of_two_points_results_in_a_vector(self):
+        p1 = Point(3, 2, 1)
+        p2 = Point(5, 6, 7)
+        rv = p1.sub(p2)
+        assert rv.to_tuple() == (-2, -4, -6, 0)
+
+    def test_subtraction_of_a_vector_from_a_point_results_in_a_point(self):
+        p1 = Point(3, 2, 1)
+        v1 = Vector(5, 6, 7)
+        dp = p1.sub(v1)
+        assert dp.to_tuple() == (-2, -4, -6, 1)

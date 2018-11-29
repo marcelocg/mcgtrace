@@ -101,3 +101,17 @@ class TestVector(object):
         with pytest.raises(TypeError):
             # one can not add a scalar to a vector
             vector.add(1)
+
+    # ...............{ Subtraction                     }...............
+    def test_subtraction_of_two_vectors_results_in_a_vector(self):
+        v1 = Vector(3, 2, 1)
+        v2 = Vector(5, 6, 7)
+        rv = v1.sub(v2)
+        assert rv.to_tuple() == (-2, -4, -6, 0)
+
+    def test_subtraction_of_a_point_from_a_vector_raises_type_error(self):
+        v1 = Vector(3, 2, 1)
+        pt = Point(5, 6, 7)
+        with pytest.raises(TypeError):
+            # subtract a point from a vector makes no sense
+            v1.sub(pt)
