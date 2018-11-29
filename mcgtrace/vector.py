@@ -1,7 +1,7 @@
-from mcgtrace.point import Point
+import mcgtrace.point
+
 
 class Vector:
-
     def __init__(self, *tup):
         self.x, self.y, self.z = tup
         self.w = 0.0
@@ -22,10 +22,10 @@ class Vector:
             return Vector(self.x + other.x,
                           self.y + other.y,
                           self.z + other.z)
-        elif isinstance(other, Point):
-            return Point(self.x + other.x,
-                         self.y + other.y,
-                         self.z + other.z)
+        elif isinstance(other, mcgtrace.point.Point):
+            return mcgtrace.point.Point(self.x + other.x,
+                                        self.y + other.y,
+                                        self.z + other.z)
         elif isinstance(other, tuple) and len(other) == 4:
             if other[3] == 0 or other[3] == 1:
                 return (self.x + other[0],
@@ -33,7 +33,8 @@ class Vector:
                         self.z + other[2],
                         self.w + other[3])
             else:
-                raise ValueError("Tuple passed as argument does not represent a Point or a Vector")
+                raise ValueError(
+                    "Tuple passed as argument does not represent a Point or a Vector")
         else:
             raise TypeError(
                 "Value is not a Vector, a Point or a 4-dimensional tuple")
