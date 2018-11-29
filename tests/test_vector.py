@@ -4,6 +4,10 @@ from mcgtrace.vector import Vector
 
 
 class TestVector(object):
+    def test_builds_a_vector_from_a_tuple(self):
+        point = Vector.from_tuple((1, 1, 1))
+        assert Vector.object_is_vector(point)
+
     def test_recognizes_a_vector_in_a_tuple(self):
         tup = (1.0, 1.0, 1.0, 0.0)
         assert Vector.tuple_is_vector(tup)

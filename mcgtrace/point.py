@@ -14,6 +14,10 @@ class Point:
     def object_is_point(p):
         return p.w == 1.0
 
+    @staticmethod
+    def from_tuple(tup):
+        return Point(*tup)
+
     def to_tuple(self):
         return (self.x, self.y, self.z, self.w)
 
