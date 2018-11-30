@@ -29,7 +29,7 @@ class TestPoint(object):
     def test_builds_a_point_from_a_tuple(self):
         point = Point.from_tuple((1, 1, 1))
         assert Point.object_is_point(point)
-        
+
     def test_creates_a_point_from_coordinates(self):
         point = Point(1, 1, 1)
         assert point.w == 1.0
@@ -56,19 +56,16 @@ class TestPoint(object):
         assert isinstance(destination, Point)
         assert destination is not starting_point
 
-    def test_addition_to_tuple_as_vector(self):
+    def test_addition_to_tuple_assumes_adding_a_vector(self):
+        # tuple argument assumes a Vector,
+        # as point addition makes no sense
+        vector = (-2, 3, 1)
         point = Point(3, -2, 5)
-        vector = (-2, 3, 1, 0)
-        destination = point.add(vector)
-        # a point added to a vector results in a translated point (w=1)
-        assert destination == (1, 1, 6, 1)
-
-    def test_tuple_as_vector_addition_results_in_new_tuple(self):
-        vector = (3, -2, 5, 0)  # emulates a Vector
-        point = Point(-2, 3, 1)
         dest = point.add(vector)
-        assert isinstance(dest, tuple)
-        assert dest is not vector
+        # a point added to a vector results in a translated point
+        assert isinstance(dest, Point)
+        assert dest is not point
+        assert dest.to_tuple() == (1, 1, 6, 1)
 
     def test_point_addition_raises_type_error(self):
         p1 = Point(-2, 3, 1)
@@ -80,6 +77,11 @@ class TestPoint(object):
         point = Point(-2, 3, 1)
         with pytest.raises(ValueError):
             dest = point.add((3, -2, 5, 1))  # tuple that emulates a Point
+
+    def test_tuple_as_vector_addition_raises_value_error(self):
+        point = Point(-2, 3, 1)
+        with pytest.raises(ValueError):
+            dest = point.add((3, -2, 5, 0))  # tuple that emulates a Vector
 
     def test_invalid_tuple_addition_raises_value_error(self):
         point = Point(-2, 3, 1)

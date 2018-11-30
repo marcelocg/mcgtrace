@@ -26,21 +26,17 @@ class Point:
             return Point(self.x + other.x,
                          self.y + other.y,
                          self.z + other.z)
-        elif isinstance(other, tuple) and len(other) == 4:
-            if other[3] == 0:
-                return (self.x + other[0],
-                        self.y + other[1],
-                        self.z + other[2],
-                        self.w + other[3])
+        elif isinstance(other, tuple):
+            if len(other) == 3:
+                return Point(self.x + other[0],
+                             self.y + other[1],
+                             self.z + other[2])
             else:
                 raise ValueError(
-                    "Tuple passed as argument does not represent a Vector.")
-        elif isinstance(other, Point):
-            raise TypeError(
-                "Adding two points makes no sense. Try adding a Vector instead.")
+                    "Tuple argument should have 3 dimensions.")
         else:
             raise TypeError(
-                "Value is not a Vector or a 4-dimensional tuple")
+                "Argument is not a Vector or a 3-dimensional tuple")
 
     def sub(self, other):
         if isinstance(other, mcgtrace.vector.Vector):
