@@ -41,3 +41,16 @@ class Point:
         else:
             raise TypeError(
                 "Value is not a Vector or a 4-dimensional tuple")
+
+    def sub(self, other):
+        if isinstance(other, mcgtrace.vector.Vector):
+            return Point(self.x - other.x,
+                         self.y - other.y,
+                         self.z - other.z)
+        elif isinstance(other, Point):
+            return mcgtrace.vector.Vector(self.x - other.x,
+                                          self.y - other.y,
+                                          self.z - other.z)
+        else:
+            raise TypeError(
+                "Argument is neither a Point or a Vector.")

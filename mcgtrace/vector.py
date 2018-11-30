@@ -42,3 +42,12 @@ class Vector:
         else:
             raise TypeError(
                 "Value is not a Vector, a Point or a 4-dimensional tuple")
+
+    def sub(self, other):
+        if isinstance(other, Vector):
+            return Vector(self.x - other.x,
+                          self.y - other.y,
+                          self.z - other.z)
+        else:
+            raise TypeError(
+                "Argument is not a Vector.")
