@@ -51,3 +51,8 @@ class Vector:
         else:
             raise TypeError(
                 "Argument is not a Vector.")
+
+    def opposite(self):
+        return Vector(self.x * -1,
+                      self.y * -1,
+                      self.z * -1)

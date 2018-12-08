@@ -115,3 +115,8 @@ class TestVector(object):
         with pytest.raises(TypeError):
             # subtract a point from a vector makes no sense
             v1.sub(pt)
+
+    # ...............{ Negate / Opposite               }...............
+    def test_the_opposite_of_a_vector_is_its_negative(self):
+        v1 = Vector(3, 2, 1)
+        assert v1.opposite().to_tuple() == (-3, -2, -1, 0)
