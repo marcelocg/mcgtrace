@@ -1,3 +1,4 @@
+import math
 import mcgtrace.point
 
 
@@ -62,5 +63,15 @@ class Vector:
                       self.y * factor,
                       self.z * factor)
 
+    def magnitude(self):
+        return math.sqrt(self.x ** 2 +
+                         self.y ** 2 +
+                         self.z ** 2)
+
+#   ... A L I A S E S ...
+
     def scale_by(self, factor):
         return self.scale(factor)
+
+    def length(self):
+        return self.magnitude()

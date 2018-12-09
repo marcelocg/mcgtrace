@@ -1,4 +1,5 @@
 import pytest
+import math
 from mcgtrace.point import Point
 from mcgtrace.vector import Vector
 
@@ -130,3 +131,19 @@ class TestVector(object):
     def test_vector_scale_by_alias_is_implemented(self):
         v1 = Vector(1, -2, 3)
         assert v1.scale_by(3.5).to_tuple() == (3.5, -7, 10.5, 0)
+
+    def test_unit_X_vector_has_a_magnitude_of_1(self):
+        assert Vector(1, 0, 0).magnitude() == 1
+
+    def test_unit_Y_vector_has_a_magnitude_of_1(self):
+        assert Vector(0, 1, 0).magnitude() == 1
+
+    def test_unit_Z_vector_has_a_magnitude_of_1(self):
+        assert Vector(0, 0, 1).magnitude() == 1
+
+    def test_arbitrary_vector_has_a_magnitude(self):
+        assert Vector(1, 2, 3).magnitude() == math.sqrt(14)
+        assert Vector(-1, -2, -3).magnitude() == math.sqrt(14)
+
+    def test_vector_length_alias_is_implemented(self):
+        assert Vector(1, 0, 0).length() == 1
