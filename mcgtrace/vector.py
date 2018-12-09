@@ -68,6 +68,12 @@ class Vector:
                          self.y ** 2 +
                          self.z ** 2)
 
+    def normalize(self):
+        mag = self.mag()
+        return Vector(self.x / mag,
+                      self.y / mag,
+                      self.z / mag)
+
 #   ... A L I A S E S ...
 
     def scale_by(self, factor):
@@ -81,3 +87,9 @@ class Vector:
 
     def mag(self):
         return self.magnitude()
+
+    def normalized(self):
+        return self.normalize()
+
+    def norm(self):
+        return self.normalize()

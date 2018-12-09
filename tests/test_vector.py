@@ -149,3 +149,11 @@ class TestVector(object):
         assert Vector(1, 0, 0).length() == 1
         assert Vector(1, 0, 0).len() == 1
         assert Vector(1, 0, 0).mag() == 1
+
+    def test_arbitrary_vector_narmalization(self):
+        assert Vector(1, 2, 3).normalize().mag() == 1
+        assert Vector(4, 0, 0).normalize().to_tuple() == (1, 0, 0, 0)
+
+    def test_vector_normalization_aliases_are_implemented(self):
+        assert Vector(4, 0, 0).normalized().to_tuple() == (1, 0, 0, 0)
+        assert Vector(4, 0, 0).norm().to_tuple() == (1, 0, 0, 0)
