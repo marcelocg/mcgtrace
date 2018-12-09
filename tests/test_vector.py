@@ -145,5 +145,7 @@ class TestVector(object):
         assert Vector(1, 2, 3).magnitude() == math.sqrt(14)
         assert Vector(-1, -2, -3).magnitude() == math.sqrt(14)
 
-    def test_vector_length_alias_is_implemented(self):
+    def test_vector_magnitude_aliases_are_implemented(self):
         assert Vector(1, 0, 0).length() == 1
+        assert Vector(1, 0, 0).len() == 1
+        assert Vector(1, 0, 0).mag() == 1

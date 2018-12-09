@@ -75,3 +75,9 @@ class Vector:
 
     def length(self):
         return self.magnitude()
+
+    def len(self):
+        return self.magnitude()
+
+    def mag(self):
+        return self.magnitude()
