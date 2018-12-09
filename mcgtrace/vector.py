@@ -56,3 +56,11 @@ class Vector:
         return Vector(self.x * -1,
                       self.y * -1,
                       self.z * -1)
+
+    def scale(self, factor):
+        return Vector(self.x * factor,
+                      self.y * factor,
+                      self.z * factor)
+
+    def scale_by(self, factor):
+        return self.scale(factor)

@@ -120,3 +120,13 @@ class TestVector(object):
     def test_the_opposite_of_a_vector_is_its_negative(self):
         v1 = Vector(3, 2, 1)
         assert v1.opposite().to_tuple() == (-3, -2, -1, 0)
+
+    def test_vector_scaling(self):
+        v1 = Vector(1, -2, 3)
+        assert v1.scale(3.5).to_tuple() == (3.5, -7, 10.5, 0)
+        assert v1.scale(0.5).to_tuple() == (0.5, -1, 1.5, 0)
+        assert v1.scale(-2).to_tuple() == (-2, 4, -6, 0)
+
+    def test_vector_scale_by_alias_is_implemented(self):
+        v1 = Vector(1, -2, 3)
+        assert v1.scale_by(3.5).to_tuple() == (3.5, -7, 10.5, 0)
