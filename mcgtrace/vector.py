@@ -74,6 +74,11 @@ class Vector:
                       self.y / mag,
                       self.z / mag)
 
+    def dot(self, other):
+        return ((self.x * other.x) +
+                (self.y * other.y) +
+                (self.z * other.z))
+
 #   ... A L I A S E S ...
 
     def scale_by(self, factor):

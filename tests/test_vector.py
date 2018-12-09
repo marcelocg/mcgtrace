@@ -150,10 +150,16 @@ class TestVector(object):
         assert Vector(1, 0, 0).len() == 1
         assert Vector(1, 0, 0).mag() == 1
 
-    def test_arbitrary_vector_narmalization(self):
+    def test_arbitrary_vector_normalization(self):
         assert Vector(1, 2, 3).normalize().mag() == 1
         assert Vector(4, 0, 0).normalize().to_tuple() == (1, 0, 0, 0)
 
     def test_vector_normalization_aliases_are_implemented(self):
         assert Vector(4, 0, 0).normalized().to_tuple() == (1, 0, 0, 0)
         assert Vector(4, 0, 0).norm().to_tuple() == (1, 0, 0, 0)
+
+    def test_vector_dot_product(self):
+        v1 = Vector(1,2,3)
+        v2 = Vector(2,3,4)
+        assert v1.dot(v2) == 20
+        
